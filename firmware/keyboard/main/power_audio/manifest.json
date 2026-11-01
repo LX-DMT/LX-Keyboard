@@ -1,0 +1,20 @@
+{
+  "format": "signed little-endian PCM16 mono 16000 Hz",
+  "mapping": "keyboard/main/config.h: filenames are swapped vs content",
+  "clips": {
+    "startup": {
+      "source": "keyboard\\spiffs\\poweroff.wav",
+      "source_sha256": "d0bd8c5338a91ba0e91b4dc38db4f5924fccec72ff2f19875223ef09159f149a",
+      "sha256": "5c55fa0ccd3ef0228fb4e9467ec87d918cafb7615d79b707bcd0ba820b32e4b4",
+      "bytes": 65600,
+      "duration_ms": 2050
+    },
+    "shutdown": {
+      "source": "keyboard\\spiffs\\poweron.wav",
+      "source_sha256": "60eabd77a82698ae40e79d4c841adb762d164414d09062f801246d919fe7f796",
+      "sha256": "57e78baba92a62f01e008a096ab6d8d2372056b402fe81c7ced1983602f46660",
+      "bytes": 66560,
+      "duration_ms": 2080
+    }
+  }
+}

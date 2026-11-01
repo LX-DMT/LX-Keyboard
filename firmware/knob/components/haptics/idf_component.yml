@@ -1,0 +1,5 @@
+dependencies:
+  # esp_simplefoc 1.3.0 declares arduino-foc >=2.3.0~3, but arduino-foc
+  # 2.4 changed ABI signatures used by this port. Keep the verified pair.
+  espressif/esp_simplefoc: "1.3.0"
+  espressif/arduino-foc: "2.3.0~3"

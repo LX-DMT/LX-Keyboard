@@ -1,0 +1,21 @@
+# Local build products and device data
+artifacts/
+pc_app/dist/
+pc_app/build/
+pc_app/.venv/
+pc_app/venv/
+firmware/**/build/
+firmware/**/build-*/
+**/managed_components/
+**/sdkconfig
+**/sdkconfig.old
+**/dependencies.lock
+**/__pycache__/
+*.pyc
+.env
+.env.*
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+# Do not ignore all *.bin or *.a: vendored speech models and libraries are required.

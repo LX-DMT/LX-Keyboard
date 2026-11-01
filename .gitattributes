@@ -1,0 +1,13 @@
+* text=auto eol=lf
+*.md text eol=lf
+*.py text eol=lf
+*.yml text eol=lf
+*.cmd text eol=crlf
+*.bin binary
+*.a binary
+*.pcm binary
+*.wav binary
+*.png binary
+*.jpg binary
+# Vendored lockfile hashes are byte-exact, including original line endings.
+third_party/** -text

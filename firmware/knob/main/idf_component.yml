@@ -1,0 +1,18 @@
+dependencies:
+  idf: "==5.5.6"
+  espressif/arduino-foc:
+    path: "../../../third_party/espressif__arduino-foc"
+  espressif/cmake_utilities:
+    path: "../../../third_party/espressif__cmake_utilities"
+  espressif/esp_lcd_gc9a01:
+    path: "../../../third_party/espressif__esp_lcd_gc9a01"
+  espressif/esp_simplefoc:
+    path: "../../../third_party/espressif__esp_simplefoc"
+  espressif/i2c_bus:
+    path: "../../../third_party/espressif__i2c_bus"
+  espressif/iqmath:
+    path: "../../../third_party/espressif__iqmath"
+  espressif/led_strip:
+    path: "../../../third_party/espressif__led_strip"
+  lvgl/lvgl:
+    path: "../../../third_party/lvgl__lvgl"

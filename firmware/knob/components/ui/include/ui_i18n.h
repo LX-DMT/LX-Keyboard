@@ -1,0 +1,22 @@
+#pragma once
+
+/**
+ * @file ui_i18n.h
+ * @brief UI 文案与字体宏（校准字符串来自 strain_cal_text）
+ */
+
+#include "lvgl.h"
+#include "strain_cal_text.h"
+
+#define UI_FONT_MENU_CAPTION &lv_font_montserrat_14
+#define UI_FONT_CAL_PROMPT &lv_font_montserrat_20
+#define UI_FONT_CAL_COUNTDOWN &lv_font_montserrat_34
+#define UI_STR_CAL_CAPTION STRAIN_CAL_CAPTION
+#define UI_STR_CAL_COUNTDOWN STRAIN_CAL_COUNTDOWN_FMT
+#define UI_STR_CAL_ROTATE_TO_START STRAIN_CAL_ROTATE_TO_START
+#define UI_STR_CAL_STARTING STRAIN_CAL_STARTING
+#define UI_STR_CAL_PRESS_PROMPT STRAIN_CAL_PRESS_PROMPT
+#define UI_STR_CAL_RELEASE_PROMPT STRAIN_CAL_RELEASE_PROMPT
+#define UI_STR_CAL_MOTOR_PROMPT STRAIN_CAL_MOTOR_PROMPT
+#define UI_STR_CAL_DONE_OK STRAIN_CAL_DONE_OK
+#define UI_STR_CAL_DONE_FAIL STRAIN_CAL_DONE_FAIL
