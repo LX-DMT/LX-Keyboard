@@ -1,0 +1,4 @@
+{
+  "idf.buildPath": "${workspaceFolder}/build",
+  "idf.buildPathWin": "${workspaceFolder}\\build"
+}

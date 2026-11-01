@@ -23,7 +23,7 @@ def package(out):
     manifest={'version':(ROOT/'VERSION').read_text().strip(),'idf':'5.5.6','flash_mhz':80,'purpose':'factory installation; erases configuration',
               'tool':'esptool '+esptool.__version__,'boards':{}}
     for board,name in APPS.items():
-        build=ROOT/'firmware'/board/'build'
+        build=ROOT/board/'build'
         meta=json.loads((build/'project_description.json').read_text(encoding='utf8'))
         assert meta['git_revision']=='v5.5.6' and meta['target']=='esp32s3',board
         config=json.loads((build/'flasher_args.json').read_text(encoding='utf8'))
@@ -61,9 +61,15 @@ def package(out):
     (out/'docs').mkdir();shutil.copy2(ROOT/'docs/LICENSING.md',out/'docs/LICENSING.md')
     (out/'pc_app').mkdir();shutil.copy2(ROOT/'pc_app/THIRD_PARTY.md',out/'pc_app/THIRD_PARTY.md')
     shutil.copytree(ROOT/'pc_app/licenses',out/'pc_app/licenses')
-    for p in (ROOT/'third_party').rglob('*'):
-        if p.is_file() and p.name.lower().startswith(('license','licence','copying','notice')):
-            dest=out/p.relative_to(ROOT);dest.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,dest)
+    for board in APPS:
+        project=ROOT/board
+        for relative in ('THIRD_PARTY.md','LICENSE','docs/LICENSING.md'):
+            dest=out/board/relative;dest.parent.mkdir(parents=True,exist_ok=True)
+            shutil.copy2(project/relative,dest)
+        for folder in ('managed_components','components'):
+            for p in (project/folder).rglob('*'):
+                if p.is_file() and p.name.lower().startswith(('license','licence','copying','notice')):
+                    dest=out/p.relative_to(ROOT);dest.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,dest)
     (out/'manifest.json').write_text(json.dumps(manifest,indent=2),encoding='utf8')
     files={p.relative_to(out).as_posix():digest(p.read_bytes()) for p in sorted(out.rglob('*')) if p.is_file()}
     (out/'SHA256SUMS.txt').write_text(''.join(f'{sha}  {name}\n' for name,sha in files.items()),encoding='utf8')

@@ -10,4 +10,4 @@
 *.png binary
 *.jpg binary
 # Vendored lockfile hashes are byte-exact, including original line endings.
-third_party/** -text
+keyboard/components/esp_websocket_client/** -text

@@ -9,6 +9,18 @@ permissions:
   contents: read
 
 jobs:
+  source-check:
+    runs-on: ubuntu-latest
+    container: espressif/idf:v5.5.6
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check standalone layout and tests
+        shell: bash
+        run: |
+          . /opt/esp/idf/export.sh
+          python scripts/verify_portability.py
+          python scripts/check_release.py
+          python -m unittest discover -s tests -p 'test_*.py'
   build:
     runs-on: ubuntu-latest
     container: espressif/idf:v5.5.6
@@ -18,18 +30,17 @@ jobs:
         board: [keyboard, knob, receiver]
     steps:
       - uses: actions/checkout@v4
-      - name: Verify, test and build
+      - name: Build only the selected standalone folder
         shell: bash
         run: |
           . /opt/esp/idf/export.sh
-          python scripts/verify_portability.py
-          python scripts/check_release.py
-          python -m unittest discover -s tests -p 'test_*.py'
-          python scripts/build.py "${{ matrix.board }}"
+          cp -a "${{ matrix.board }}" "$RUNNER_TEMP/lx-${{ matrix.board }}"
+          cd "$RUNNER_TEMP/lx-${{ matrix.board }}"
+          idf.py build
       - name: Keep build logs
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: build-log-${{ matrix.board }}
-          path: artifacts/logs/
+          path: ${{ runner.temp }}/lx-${{ matrix.board }}/build/log/
           if-no-files-found: ignore

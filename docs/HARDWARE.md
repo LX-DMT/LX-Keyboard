@@ -6,7 +6,7 @@
 
 ## 键盘
 
-定义：[board.h](../firmware/keyboard/main/board.h)，电平和初始化：[board.c](../firmware/keyboard/main/board.c)。
+定义：[board.h](../keyboard/main/board.h)，电平和初始化：[board.c](../keyboard/main/board.c)。
 
 | 信号 | GPIO |
 | --- | --- |
@@ -25,7 +25,7 @@
 
 ## 旋钮
 
-定义：[board_pins.h](../firmware/knob/components/board/include/board_pins.h)。
+定义：[board_pins.h](../knob/components/board/include/board_pins.h)。
 
 | 外设 | GPIO / 参数 |
 | --- | --- |
@@ -50,6 +50,6 @@ LED1 为 3V3 经限流电阻和 LED 接 GPIO13，低电平亮；当前板限流�
 
 ## 分区与容量
 
-分区表是实际依据：[键盘](../firmware/keyboard/partitions.csv)、[旋钮](../firmware/knob/partitions.csv)、[接收器](../firmware/receiver/partitions.csv)。
+分区表是实际依据：[键盘](../keyboard/partitions.csv)、[旋钮](../knob/partitions.csv)、[接收器](../receiver/partitions.csv)。
 
 修改分区、存储接口、电压或 GPIO 后需重新验证。

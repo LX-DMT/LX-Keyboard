@@ -6,8 +6,8 @@
 
 | 协议 | 链路 | 实现 |
 | --- | --- | --- |
-| LX v1 | 键盘 ↔ 旋钮 UART，115200 8N1 | [旋钮协议文档](../firmware/knob/docs/host_link/proto.md) |
-| LX v2 | 产品 CDC、键盘/接收器无线、配置和控制 | [头文件](../shared/protocol/include/lx_protocol.h)、[C/Python 实现](../shared/protocol/) |
+| LX v1 | 键盘 ↔ 旋钮 UART，115200 8N1 | [旋钮协议文档](../knob/docs/host_link/proto.md) |
+| LX v2 | 产品 CDC、键盘/接收器无线、配置和控制 | [头文件](../keyboard/components/protocol/include/lx_protocol.h)、[C/Python 实现](../keyboard/components/protocol/) |
 
 LX v2 最大帧 250 字节，字段为 `4C 58` 帧头、版本 2、类型、uint16 载荷长度、uint32 序列号、uint32 启动会话、载荷、CRC16。多字节整数小端；载荷最大 234 字节，CRC16-CCITT 初值 `FFFF`、多项式 `1021`，覆盖 CRC 前全部字节。
 
@@ -27,7 +27,7 @@ LX v2 最大帧 250 字节，字段为 `4C 58` 帧头、版本 2、类型、uint
 
 ## 首次配置事务
 
-[device_setup.c](../firmware/components/network_link/device_setup.c) 实现产品 USB 配置事务：读取身份 → 开始会话 → 暂存网络和对端身份/密钥 → 验证 → 提交 → 封存。中途失败可回滚，未封存事务在重启时恢复原配置。每台设备保存的是对端身份和共享密钥，双方均需配置。
+[device_setup.c](../keyboard/components/network_link/device_setup.c) 实现产品 USB 配置事务：读取身份 → 开始会话 → 暂存网络和对端身份/密钥 → 验证 → 提交 → 封存。中途失败可回滚，未封存事务在重启时恢复原配置。每台设备保存的是对端身份和共享密钥，双方均需配置。
 
 `SETUP` op1 查询；op2 用 16 字节非零随机会话 token 开始；其余会话请求携带同一 token。op3 暂存 Wi-Fi；op4 暂存对端 6 字节 MAC 与 16 字节配对密钥；op6 验证；op7 状态；op8 提交；op9 回滚；op10 封存；op11/12 扫描/读取 AP。op5 PC 配对在本版拒绝。
 

@@ -11,7 +11,7 @@
 
 ## 使用说明
 
-下载：[Windows 上位机](https://github.com/LX-DMT/LX-Keyboard/releases/download/v1.0.0/LXKeyboardSetup-v1.0.0-Windows-x64.zip) · [三板预编译固件](https://github.com/LX-DMT/LX-Keyboard/releases/download/v1.0.0/LX-Firmware-v1.0.0.zip) · [完整源码包](https://github.com/LX-DMT/LX-Keyboard/releases/download/v1.0.0/LX-Keyboard-v1.0.0-source.zip)
+下载：[Windows 上位机](https://github.com/LX-DMT/LX-Keyboard/releases/download/v1.0.0/LXKeyboardSetup-v1.0.0-Windows-x64.zip) · [三板预编译固件](https://github.com/LX-DMT/LX-Keyboard/releases/download/v1.0.0/LX-Firmware-v1.0.0.zip) · [完整源码包](https://github.com/LX-DMT/LX-Keyboard/archive/refs/heads/main.zip)
 
 1. 通过旋钮选择连接模式。USB 模式连接键盘产品 USB；蓝牙模式在电脑上配对；接收器模式需先完成绑定。
 2. 将 Windows 上位机程序包完整解压，运行 `LXKeyboardSetup.exe`，保留同目录的 `_internal` 文件夹。
@@ -31,7 +31,9 @@
 
 ### 固件
 
-安装并打开 **ESP-IDF 5.5.6** 环境终端，保留完整源码目录，在项目根目录执行：
+安装并打开 **ESP-IDF 5.5.6** 环境终端。在 VS Code 中直接打开 `keyboard`、`knob` 或 `receiver` 文件夹，点击 ESP-IDF 扩展的“编译项目”；首次编译自动联网下载固定版本依赖。每个工程均可单独复制使用。
+
+需要一次编译三块板时，在仓库根目录执行：
 
 ```sh
 python scripts/verify_portability.py

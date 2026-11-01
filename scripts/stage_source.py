@@ -18,7 +18,7 @@ if __name__ == '__main__':
         raise SystemExit('Initialize a local Git repository in this directory first')
     names = [p.relative_to(ROOT).as_posix() for p in sorted(ROOT.rglob('*')) if included(p)]
     for force in (False, True):
-        subset = [p for p in names if p.startswith('third_party/') == force]
+        subset = [p for p in names if ('components/esp_websocket_client/' in p) == force]
         command = ['git', '-C', str(ROOT), 'add'] + (['--force'] if force else [])
         command += ['--pathspec-from-file=-', '--pathspec-file-nul']
         if subset:

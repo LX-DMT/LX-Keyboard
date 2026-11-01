@@ -1,0 +1,12 @@
+{
+  "files": {
+    "keyboard/components/esp_websocket_client/CHANGELOG.md": "b91c02b86cfff86920a5ab14d2fe5776446effe6d18272c58bdcd9b872f293c9",
+    "keyboard/components/esp_websocket_client/CMakeLists.txt": "2d26aec8d9f48972e451b7d74c4f2295cd8acd8494e4a33219af6325daf81399",
+    "keyboard/components/esp_websocket_client/esp_websocket_client.c": "c2352ecb011dcfb9762b093bcdef5aa8fc06131380f398ebae381b830bddb999",
+    "keyboard/components/esp_websocket_client/idf_component.yml": "0d557ddf7854668dbce7e349de51bc17c31465dd8f40d6269e0cecfc5ccef48e",
+    "keyboard/components/esp_websocket_client/Kconfig": "336dc4fd94d4ee9786c81ad08f32ddb0271ed16c1f79c282e1d8e13ca86af8c3",
+    "keyboard/components/esp_websocket_client/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "keyboard/components/esp_websocket_client/README.md": "88edfb76a9debd66989c7b57fb2ad878cd45103d6e8c3074e26d80f26a60e35f",
+    "keyboard/components/esp_websocket_client/include/esp_websocket_client.h": "382fdce725ff80c15172e2850dcb41702a655857bed76fff7ac4e9c811311cfa"
+  }
+}

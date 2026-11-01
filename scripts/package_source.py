@@ -10,9 +10,9 @@ def included(p):
     rel=p.relative_to(ROOT)
     if rel.parts[0]=='pc_app' and any(n in {'dist','build','.venv','venv'} for n in rel.parts[1:-1]):return False
     if any(n in {'artifacts','managed_components','__pycache__','.git'} for n in rel.parts[:-1]):return False
-    if rel.parts[0]!='third_party' and any(n in {'.vscode','.idea'} for n in rel.parts[:-1]):return False
+    if '.idea' in rel.parts[:-1]:return False
     if rel.parts[0]!='third_party' and any(n=='build' or n.startswith('build-') for n in rel.parts[:-1]):return False
-    if p.name in ('sdkconfig','sdkconfig.old','dependencies.lock','Thumbs.db','.DS_Store'):return False
+    if p.name in ('sdkconfig','sdkconfig.old','Thumbs.db','.DS_Store'):return False
     if rel.parts[0]!='third_party' and (p.name=='.env' or p.name.startswith('.env.') or p.suffix in ('.pyc','.log','.bak')):return False
     return p.is_file()
 

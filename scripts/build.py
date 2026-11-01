@@ -91,7 +91,7 @@ def main():
     boards=('keyboard','knob','receiver') if args.board=='all' else (args.board,)
     with KnobPower(args.power_port) as power:
       for board in boards:
-        project=ROOT/'firmware'/board
+        project=ROOT/board
         path=logs/f'{datetime.datetime.now():%Y%m%d-%H%M%S}-{board}-{args.action}.log'
         command=[sys.executable,str(idf/'tools/idf.py'),'-C',str(project),args.action]
         print(f'{board}: ESP-IDF {VERSION}; log={path}',flush=True)

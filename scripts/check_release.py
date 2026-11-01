@@ -19,7 +19,7 @@ def check(builds=False):
     errors = []
     files = [p for p in ROOT.rglob('*') if included(p)]
     for required in ('README.md', 'LICENSE', 'IDF_VERSION', 'THIRD_PARTY.md',
-                     'third_party.lock.json', 'VERSION', 'pc_app/README.md'):
+                     'vendored.lock.json', 'VERSION', 'pc_app/README.md'):
         if not (ROOT / required).is_file():
             errors.append('Missing required file: ' + required)
     pc = [p.relative_to(ROOT).as_posix() for p in files if p.relative_to(ROOT).parts[0] == 'pc_app']
@@ -32,7 +32,7 @@ def check(builds=False):
     linked = 0
     for p in files:
         rel = p.relative_to(ROOT)
-        if rel.parts[0] == 'third_party' or p.suffix != '.md':
+        if 'esp_websocket_client' in rel.parts or p.suffix != '.md':
             continue
         content = p.read_text(encoding='utf-8-sig')
         for raw in re.findall(r'\[[^\]]*\]\(([^)]+)\)', content):
@@ -51,7 +51,7 @@ def check(builds=False):
               'builds': {}, 'errors': errors}
     if builds:
         for board, app in (('keyboard', 'lx_keyboard'), ('knob', 'lx_knob_idf'), ('receiver', 'lx_receiver')):
-            build = ROOT / 'firmware' / board / 'build'
+            build = ROOT / board / 'build'
             try:
                 meta = json.loads((build / 'project_description.json').read_text(encoding='utf8'))
                 sdk = Path(meta['idf_path']).resolve()
@@ -61,7 +61,7 @@ def check(builds=False):
                     errors.append('Unexpected SDK or outside component path: ' + board)
                 binary = build / (app + '.bin')
                 boot = build / 'bootloader/bootloader.bin'
-                config = (ROOT / 'firmware' / board / 'sdkconfig').read_text(encoding='utf8')
+                config = (ROOT / board / 'sdkconfig').read_text(encoding='utf8')
                 headers = {'bootloader': boot.read_bytes()[:4].hex(), 'application': binary.read_bytes()[:4].hex()}
                 if 'CONFIG_ESPTOOLPY_FLASHFREQ_80M=y' not in config or any(bytes.fromhex(h)[3] & 15 != 15 for h in headers.values()):
                     errors.append('Generated config/image is not 80 MHz: ' + board)

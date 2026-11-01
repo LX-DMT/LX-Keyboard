@@ -21,7 +21,7 @@ python scripts/check_release.py --builds
 
 ## 第三方更新
 
-本版依赖快照包含本地修改，例如 LVGL 色环质量参数。升级需要检查许可证、API、模型和内存占用，更新 `third_party.lock.json`，重新从干净目录构建。不要为绕过校验而直接删除锁文件。
+各工程的 `idf_component.yml` 固定依赖版本，`dependencies.lock` 记录下载包摘要。键盘保留的 WebSocket 组件由 `vendored.lock.json` 校验。升级依赖需要检查许可证、API、模型和内存占用，并从干净目录构建。键盘与接收器各自包含公共组件副本，修改时同步两份并运行一致性检查。
 
 ## 问题反馈
 

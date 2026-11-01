@@ -26,7 +26,7 @@ python scripts/check_release.py --builds
 
 ## Git 收录
 
-第三方目录包含上游忽略规则，使用收录脚本避免遗漏依赖锁文件中的条目：
+收录源码、VS Code 配置及依赖锁文件，排除下载缓存和构建产物：
 
 ```sh
 git init -b main

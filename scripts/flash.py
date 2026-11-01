@@ -52,7 +52,7 @@ def run(args):
     import esptool
     from esptool.cmds import detect_chip,detect_flash_size,write_flash
     require(esptool.__version__.startswith('4.'),'Use the Python environment installed by ESP-IDF 5.5.6 (esptool 4.x)')
-    build=ROOT/'firmware'/args.board/'build'
+    build=ROOT/args.board/'build'
     metadata=json.loads((build/'project_description.json').read_text(encoding='utf8'))
     require(metadata['git_revision'].lstrip('v')=='5.5.6','Build is not exactly ESP-IDF 5.5.6')
     manifest=json.loads((build/'flasher_args.json').read_text())

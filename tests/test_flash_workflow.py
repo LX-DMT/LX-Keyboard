@@ -28,7 +28,7 @@ class Tests(unittest.TestCase):
     def setUp(self):
         (root/'artifacts/tests').mkdir(parents=True,exist_ok=True)
         self.temp=tempfile.TemporaryDirectory(dir=root/'artifacts/tests')
-        self.base=Path(self.temp.name);self.build=self.base/'firmware/receiver/build';self.build.mkdir(parents=True)
+        self.base=Path(self.temp.name);self.build=self.base/'receiver/build';self.build.mkdir(parents=True)
         self.meta={'git_revision':'v5.5.6'}
         (self.build/'project_description.json').write_text(json.dumps(self.meta))
         self.table=b'test-partition-layout'+b'\xff'*200

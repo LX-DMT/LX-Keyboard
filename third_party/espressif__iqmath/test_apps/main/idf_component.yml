@@ -1,4 +1,0 @@
-dependencies:
-  espressif/iqmath:
-    version: '*'
-    override_path: '../../'

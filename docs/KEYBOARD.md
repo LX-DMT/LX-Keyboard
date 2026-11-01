@@ -1,6 +1,6 @@
 # 键盘使用说明
 
-[返回首页](../README.md) · [源码入口](../firmware/keyboard/main/main.c)
+[返回首页](../README.md) · [源码入口](../keyboard/main/main.c)
 
 ## 四种连接模式
 
@@ -34,7 +34,7 @@ USB 模式需要产品 USB 数据线；蓝牙模式配对名称为 `LX Keyboard 
 
 仅方向键区旁原 Del 和原旋钮电量预览两个实体键可配置，扫描编号为 bit82 / bit84。默认分别为 Del 和电量预览。保存到键盘后跨模式生效；修改映射请连接产品 USB，并使用上位机的“按键”页。
 
-支持动作的代码定义见 [input_core.h](../firmware/components/input_core/include/input_core.h)；其他键不在本版自定义范围。
+支持动作的代码定义见 [input_core.h](../keyboard/components/input_core/include/input_core.h)；其他键不在本版自定义范围。
 
 ## 灯光、电量与休眠
 

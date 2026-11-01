@@ -3,11 +3,10 @@
 
 from pathlib import Path
 app=Path(SPECPATH)
-root=app.parent
 
 a = Analysis(
     [str(app/'main.py')],
-    pathex=[str(root/'shared/protocol'),str(app)],
+    pathex=[str(app)],
     binaries=[],
     datas=[(str(app/'assets'), 'assets')],
     hiddenimports=[],

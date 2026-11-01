@@ -1,6 +1,6 @@
 # 接收器使用说明
 
-[返回首页](../README.md) · [源码入口](../firmware/receiver/main/main.c)
+[返回首页](../README.md) · [源码入口](../receiver/main/main.c)
 
 ## 作用
 

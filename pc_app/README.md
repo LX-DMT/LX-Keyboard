@@ -30,6 +30,6 @@ python -m venv .venv
 .venv\Scripts\python -m PyInstaller --noconfirm LXKeyboardSetup.spec
 ```
 
-输出目录为 `dist/LXKeyboardSetup/`。保留仓库的 `shared/protocol/`，源码通过相对路径加载协议。首次安装 Python 依赖需要联网；不需要 ESP-IDF 或额外 C 编译器。
+输出目录为 `dist/LXKeyboardSetup/`。协议文件已包含在本目录，可单独下载、运行与打包。首次安装 Python 依赖需要联网；不需要 ESP-IDF 或额外 C 编译器。
 
-自有部分按根目录 [LICENSE](../LICENSE) 非商业许可提供；第三方依赖见 [THIRD_PARTY.md](THIRD_PARTY.md)。
+自有部分按本目录 [LICENSE](LICENSE) 非商业许可提供；第三方依赖见 [THIRD_PARTY.md](THIRD_PARTY.md)。

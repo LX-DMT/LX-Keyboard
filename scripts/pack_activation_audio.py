@@ -3,7 +3,7 @@ from pathlib import Path
 import struct
 import wave
 
-folder = Path(__file__).resolve().parents[1] / 'firmware/keyboard/main/activation_audio'
+folder = Path(__file__).resolve().parents[1] / 'keyboard/main/activation_audio'
 data = bytearray()
 entries = []
 for index in range(11):

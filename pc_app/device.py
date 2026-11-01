@@ -5,8 +5,6 @@ import time
 import secrets
 import serial
 from serial.tools import list_ports
-ROOT=Path(__file__).resolve().parents[1]
-sys.path.insert(0,str(ROOT/'shared'/'protocol'))
 from lx_protocol import Packet,StreamDecoder,encode,HELLO,ACK,CONFIG,HOST_STATS
 
 def config_payload(field,value=None):

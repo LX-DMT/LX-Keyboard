@@ -17,9 +17,18 @@ SDK 安装参见 [ESP-IDF v5.5.6 官方入门文档](https://docs.espressif.com/
 
 Linux/macOS 可按官方方法安装并激活 `export.sh`。默认使用 Windows 构建和烧录；其他系统需自行验证工具链和设备兼容性。
 
-## 源码准备
+## VS Code 一键编译
 
-完整下载仓库或解压源码 ZIP，保留 `third_party/`。不依赖旧项目目录或在线组件解析来选择版本。第三方组件包含预编译库、模型，不能删除所有 `.a` / `.bin` 文件。
+1. 安装乐鑫 **ESP-IDF** 扩展，配置完整的 **5.5.6** 开发环境。
+2. “文件 → 打开文件夹”，直接选择 `keyboard`、`knob` 或 `receiver`，不要选择上层仓库目录。
+3. 点击 ESP-IDF 扩展的 **Build Project / 编译项目** 按钮。首次构建会自动下载依赖，无需先运行脚本或手工复制组件。
+4. 烧录时选择该设备的下载串口，再点击扩展的 **Flash Device / 烧录**。
+
+工程已指定 ESP32-S3 和默认硬件参数。IDE 配置不包含本机 SDK 路径或串口号；首次使用仍需在扩展中选择自己安装的 5.5.6 环境。原生扩展烧录不做整片备份，需要备份校验时使用下文脚本。
+
+## 命令行编译
+
+`keyboard/`、`knob/`、`receiver/` 都是独立 ESP-IDF 工程。可以只解压所需工程，不依赖其他板子的目录。首次构建需要联网，组件管理器按清单和锁文件下载固定版本依赖（含语音模型与库）。
 
 在根目录执行：
 
@@ -29,7 +38,7 @@ python scripts/verify_portability.py
 python scripts/build.py all
 ```
 
-第一条应显示 ESP-IDF v5.5.6；校验脚本检查工程内依赖路径、分区容量和第三方逐文件 SHA-256；最后一条依次编译三套工程。日志保存在 `artifacts/logs/`，终端在每套完成时报告结果。首次构建可能较慢。
+第一条应显示 ESP-IDF v5.5.6；校验脚本检查工程内依赖路径、分区容量和保留组件 SHA-256 和工程独立性；最后一条依次编译三套工程。日志保存在 `artifacts/logs/`，终端在每套完成时报告结果。首次构建可能较慢。
 
 单独编译：
 
@@ -39,9 +48,9 @@ python scripts/build.py knob
 python scripts/build.py receiver
 ```
 
-若 `IDF_PATH` 未设置，可加 `--idf SDK_DIRECTORY`，但仍需使用已安装 IDF Python 依赖的环境。各工程也支持进入 `firmware/BOARD` 后运行 `idf.py build`。不需要重复执行 `set-target`；目标由 `sdkconfig.defaults` 指定。
+若 `IDF_PATH` 未设置，可加 `--idf SDK_DIRECTORY`，但仍需使用已安装 IDF Python 依赖的环境。各工程也支持进入 `keyboard`、`knob` 或 `receiver` 后运行 `idf.py build`。不需要重复执行 `set-target`；目标由 `sdkconfig.defaults` 指定。
 
-切换 SDK 或搬动目录后，请使用新的干净源码副本构建，避免带入原 `build/`、`sdkconfig`、`dependencies.lock` 或 `managed_components/`。不修改全局 Git 配置，不依赖用户本机 IDE 设置。
+切换 SDK 或搬动目录后，请使用新的干净源码副本构建，避免带入原 `build/`、`sdkconfig` 或 `managed_components/`；保留随源码提供的 `dependencies.lock`。不修改全局 Git 配置，不依赖用户本机 IDE 设置。
 
 ## 识别接口
 

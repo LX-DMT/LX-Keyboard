@@ -1,6 +1,6 @@
 # 旋钮使用说明
 
-[返回首页](../README.md) · [工程入口](../firmware/knob/README.md)
+[返回首页](../README.md) · [工程入口](../knob/README.md)
 
 ## 基本操作
 
@@ -43,10 +43,10 @@
 
 ## 调试仪表显示
 
-`firmware/knob/tools/host_link_tool.py` 是开发用 UART 工具，不是完整上位机。进入 Instrument 页并确保 UART 无其他发送方后，可使用：
+`knob/tools/host_link_tool.py` 是开发用 UART 工具，不是完整上位机。进入 Instrument 页并确保 UART 无其他发送方后，可使用：
 
 ```sh
-python firmware/knob/tools/host_link_tool.py stats DOWNLOAD_PORT --cpu 25 --gpu 17 --ram 51
+python knob/tools/host_link_tool.py stats DOWNLOAD_PORT --cpu 25 --gpu 17 --ram 51
 ```
 
 这会发送固定演示数值，不代表电脑实际负载。工具依赖 IDF Python 环境中的 pyserial。`monitor` / `stats` / `demo` 使用同一串口，不能同时运行；不指定串口会直接报错。
