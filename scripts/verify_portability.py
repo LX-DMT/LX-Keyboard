@@ -18,6 +18,13 @@ def number(value):
 
 def verify():
     errors=[];layouts={}
+    for folder in (ROOT, *(ROOT/board for board in BOARDS)):
+        settings=folder/'.vscode/settings.json'
+        try:
+            target=json.loads(settings.read_text(encoding='utf-8-sig')).get('idf.customExtraVars',{}).get('IDF_TARGET')
+            if target!='esp32s3':errors.append('VS Code target must be esp32s3: '+str(settings.relative_to(ROOT)))
+        except (OSError, ValueError, AttributeError) as exc:
+            errors.append('Invalid VS Code settings: '+str(settings.relative_to(ROOT))+': '+str(exc))
     for board in BOARDS:
         project=ROOT/board
         for required in ('CMakeLists.txt','sdkconfig.defaults','partitions.csv','main/idf_component.yml','dependencies.lock','.vscode/extensions.json','LICENSE','README.md'):
