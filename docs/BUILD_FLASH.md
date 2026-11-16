@@ -149,7 +149,7 @@ python scripts/package_source.py
 
 ```sh
 python scripts/check_release.py --builds
-python scripts/package_firmware.py --output artifacts/releases/LX-Firmware-v1.0.0
+python scripts/package_firmware.py --output artifacts/releases/LX-Firmware
 ```
 
 输出目录必须尚不存在。脚本只读取构建产物并校验合并结果，不连接设备；工厂包用于首次烧录或恢复出厂。

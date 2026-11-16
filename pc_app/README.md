@@ -2,7 +2,7 @@
 
 ## 使用说明
 
-Windows 10/11 x64：完整解压 `LXKeyboardSetup-v1.0.0-Windows-x64.zip`，运行 `LXKeyboardSetup.exe`。`_internal` 必须与 EXE 一起保留，无需安装 Python。
+Windows 10/11 x64：从[最新 Release](https://github.com/LX-DMT/LX-Keyboard/releases/latest) 下载并完整解压 `LXKeyboardSetup-Windows-x64.zip`，运行 `LXKeyboardSetup.exe`。`_internal` 必须与 EXE 一起保留，无需安装 Python。
 
 设备配置前，将键盘切到 **USB 模式**，用数据线连接键盘的产品 USB 接口。
 

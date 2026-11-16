@@ -4,7 +4,7 @@
 
 ## 选择固件
 
-下载并完整解压 `LX-Firmware-v1.0.0.zip`，每块设备只选择对应的一份文件：
+从[最新 Release](https://github.com/LX-DMT/LX-Keyboard/releases/latest) 下载并完整解压 `LX-Firmware.zip`，每块设备只选择对应的一份文件：
 
 | 设备 | 固件文件 | 烧录地址 | 最低 Flash / PSRAM |
 | --- | --- | --- | --- |

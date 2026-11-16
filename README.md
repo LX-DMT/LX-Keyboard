@@ -1,4 +1,4 @@
-# 蓝星键盘 · 旋钮 · 接收器 v1.0.0
+# 蓝星键盘 · 旋钮 · 接收器
 
 ## 项目功能
 
@@ -11,7 +11,16 @@
 
 ## 使用说明
 
-下载：[Windows 上位机](https://github.com/LX-DMT/LX-Keyboard/releases/download/v1.0.0/LXKeyboardSetup-v1.0.0-Windows-x64.zip) · [三板预编译固件](https://github.com/LX-DMT/LX-Keyboard/releases/download/v1.0.0/LX-Firmware-v1.0.0.zip) · [完整源码包](https://github.com/LX-DMT/LX-Keyboard/archive/refs/heads/main.zip)
+[最新发布 / Release](https://github.com/LX-DMT/LX-Keyboard/releases/latest)
+
+| 下载 | 内容 |
+| --- | --- |
+| [Windows 上位机](https://github.com/LX-DMT/LX-Keyboard/releases/latest/download/LXKeyboardSetup-Windows-x64.zip) | 完整解压后运行 EXE，保留 `_internal` 文件夹 |
+| [三板 BIN 固件](https://github.com/LX-DMT/LX-Keyboard/releases/latest/download/LX-Firmware.zip) | 键盘、旋钮、接收器工厂固件及免编译烧录说明 |
+| [发布版源码](https://github.com/LX-DMT/LX-Keyboard/releases/latest/download/LX-Keyboard-source.zip) | 对应 Release 标签的完整源码及文档 |
+| [最新 main 源码](https://github.com/LX-DMT/LX-Keyboard/archive/refs/heads/main.zip) | 持续更新的开发源码 |
+
+BIN 和 EXE 放在 Release 附件中；main 保留源码和说明。Release 源码固定在发布标签，后续 main 的修改不自动进入已发布版本。
 
 1. 通过旋钮选择连接模式。USB 模式连接键盘产品 USB；蓝牙模式在电脑上配对；接收器模式需先完成绑定。
 2. 将 Windows 上位机程序包完整解压，运行 `LXKeyboardSetup.exe`，保留同目录的 `_internal` 文件夹。
@@ -25,7 +34,7 @@
 
 ### 直接烧录预编译固件
 
-无需搭建编译环境：下载 `LX-Firmware-v1.0.0.zip`，用乐鑫 Flash Download Tools 选择 ESP32-S3，把对应的 `*-factory.bin` 烧录到 **`0x0`**。
+无需搭建编译环境：下载 `LX-Firmware.zip`，用乐鑫 Flash Download Tools 选择 ESP32-S3，把对应的 `*-factory.bin` 烧录到 **`0x0`**。
 
 此流程用于首次烧录或恢复出厂，会清除原配置。文件选择、下载接线和图形工具操作见[免编译烧录步骤](docs/PREBUILT_FLASH.md)。
 
